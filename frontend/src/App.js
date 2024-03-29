@@ -1,13 +1,18 @@
 import logo from './logo.svg';
 import './App.css';
-import Map from './components/Map/index'
-import 'bootstrap/dist/css/bootstrap.min.css'
+import Header from './components/Header';
+import Banner from './components/Banner';
+import Map from './components/Map/index';
 import Footer from './components/Footer';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 function App() {
   return (
-    
     <>
-    <Map />
+      <Header/>
+      <Banner/>
+     <Map />
     <Footer />
     </>
     
