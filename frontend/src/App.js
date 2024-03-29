@@ -2,6 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import Header from './components/Header';
 import Banner from './components/Banner';
+import Map from './components/Map/index';
+import Footer from './components/Footer';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -10,6 +12,8 @@ function App() {
     <>
       <Header/>
       <Banner/>
+     <Map />
+    <Footer />
     </>
     
   );
