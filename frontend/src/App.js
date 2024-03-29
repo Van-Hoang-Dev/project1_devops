@@ -1,17 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header';
+import Banner from './components/Banner';
+import Map from './components/Map/index';
+import Footer from './components/Footer';
+import ProductList from './components/ProductList';
 import UserRoot from './components/UserRoot';
 import About from './components/About';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import Contact from './components/Contact';
-
 function App() {
   return (
     <>
-      <About />
+      <Header/>
+      <Banner/>
+    <ProductList />
+    <About />
       <UserRoot />
       <Contact />
+     <Map />
+    <Footer />
     </>
+    
   );
 }
 
