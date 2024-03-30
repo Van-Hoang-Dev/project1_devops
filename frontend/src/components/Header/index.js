@@ -1,19 +1,26 @@
 
 function Header() {
+   function openNav() {
+      document.getElementById("mySidenav").style.width = "100%";
+    }
+    
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+    }
   return (
     <div className="Header">
         <div class="header_section">
          <div class="container-fluid">
             <nav class="navbar navbar-light bg-light justify-content-between">
                <div id="mySidenav" class="sidenav">
-                  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a>
+                  <a href="javascript:void(0)" class="closebtn" onClick={()=>closeNav()}>×</a>
                   <a href="index.html">Home</a>
                   <a href="products.html">Products</a>
                   <a href="about.html">About</a>
                   <a href="client.html">Client</a>
                   <a href="contact.html">Contact</a>
                </div>
-               <span class="toggle_icon" onclick="openNav()"><img src="images/toggle-icon.png" /></span>
+               <span class="toggle_icon" onClick={() => openNav()}><img src="images/toggle-icon.png" /></span>
                <a class="logo" href="index.html"><img src="images/logo.png" /></a>
                <form class="form-inline ">
                   <div class="login_text">
