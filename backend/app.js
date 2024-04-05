@@ -17,7 +17,30 @@ const corsOptions = {
 
 app.use(cors(corsOptions))
 
+app.get('/products', (req, res) => {
 
+    const myData = fs.readFileSync('../data/products.json', 'utf8');
+
+    try {
+        res.send(JSON.parse(myData));
+    } catch (error) {
+        res.send(JSON.stringify([]));
+        throw error;
+    }
+
+})
+
+app.get('/configs', (req, res) => {
+
+    const myData = fs.readFileSync('../data/configs.json', 'utf8');
+
+    try {
+        res.send(JSON.parse(myData));
+    } catch (error) {
+        res.send(JSON.stringify([]));
+        throw error;
+    }
+})
 
 app.get('/banners', (req, res) => {
     try {
@@ -29,15 +52,7 @@ app.get('/banners', (req, res) => {
     res.send(JSON.stringify([]))
 })
 
-app.get('/configs', (req, res) => {
-    try {
-        const data = fs.readFileSync('../data/configs.json', 'utf8');
-        res.send(JSON.parse(data))
-    } catch (error) {
-        console.log(error);
-    }
-    res.send(JSON.stringify([]))
-})
+
 
 app.listen(port, () => {
     console.log(`example app listening on port ${port}`)

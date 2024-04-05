@@ -1,7 +1,22 @@
 
 import Product from './../Product/index';
+import { useEffect, useState } from 'react';
 
-function ProductList(props) {
+function ProductList() {
+
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        fetch("http://localhost:3300/products")
+            .then(res => res.json())
+            .then(data => {
+                setProducts(data);
+            })
+            .catch(err => {
+                setProducts([]);
+            });
+    }, []);
+  
     return (
         <div class="product_section layout_padding">
             <div class="container">
@@ -13,46 +28,11 @@ function ProductList(props) {
                 </div>
                 <div class="product_section_2 layout_padding">
                     <div class="row">
-                        <div class="col-lg-3 col-sm-6">
-                           <Product name={"Product 1"} desc={"Day la Nhi"} price={30} />
-                        </div>
-                        <div class="col-lg-3 col-sm-6">
-                            <Product />
-                        </div>
-                        <div class="col-lg-3 col-sm-6">
-                            <Product />
-                        </div>
-                        <div class="col-lg-3 col-sm-6">
-                            <Product />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-3 col-sm-6">
-                            <Product />
-                        </div>
-                        <div class="col-lg-3 col-sm-6">
-                            <Product />
-                        </div>
-                        <div class="col-lg-3 col-sm-6">
-                            <Product />
-                        </div>
-                        <div class="col-lg-3 col-sm-6">
-                            <Product />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-3 col-sm-6">
-                            <Product />
-                        </div>
-                        <div class="col-lg-3 col-sm-6">
-                            <Product />
-                        </div>
-                        <div class="col-lg-3 col-sm-6">
-                            <Product />
-                        </div>
-                        <div class="col-lg-3 col-sm-6">
-                            <Product />
-                        </div>
+                        {products.map(product => (
+                            <div key={product.id} class="col-lg-3 col-sm-6">
+                            <Product product={product} />
+                            </div>
+                        ))}
                     </div>
                     <div class="seemore_bt"><a href="#">See More</a></div>
                 </div>
