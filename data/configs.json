@@ -17,11 +17,22 @@
     {
         "id": "4",
         "key": "BEST_PRODUCT",
-        "value": "Neutrogena Hydro Boost Water Gel Moisturizer <br> MAC Ruby Woo Lipstick <br> Maybelline Great Lash Mascara <br> NARS Orgasm Blush <br> Cetaphil Gentle Skin Cleanser <br>"
+        "value": "Neutrogena Hydro Boost Water Gel Moisturizer \n MAC Ruby Woo Lipstick \n Maybelline Great Lash Mascara \n NARS Orgasm Blush \n Cetaphil Gentle Skin Cleanser \n"
     },
     {
         "id": "5",
-        "key": "CONTACT_US",
-        "value": "address: 53 Võ Văn Ngân, Linh Chiểu, Thành Phố Thủ Đức, Thành phố Hồ Chí Minh <br> email: CD22TT11@gmail.tdc.edu.vn <br> sdt: 0383277965"
+        "key": "ADDRESS",
+        "value": "53 Võ Văn Ngân, Linh Chiểu, Thành Phố Thủ Đức, Thành phố Hồ Chí Minh"
+    },
+    {
+        "id": "6",
+        "key": "EMAIL",
+        "value": "CD22TT11@gmail.tdc.edu.vn"
+    },
+    {
+        "id": "7",
+        "key": "PHONE_NUMBER",
+        "value": "0383277965"
     }
+
 ]

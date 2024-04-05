@@ -1,4 +1,22 @@
+import { useEffect, useState } from 'react';
+
 function Footer() {
+
+   const [configs, setConfigs] = useState([]);
+
+   useEffect(() => {
+      fetch("http://localhost:3300/configs")
+         .then(res => res.json())
+         .then(data => {
+            setConfigs(data);
+         })
+         .catch(err => {
+            setConfigs([]);
+         });
+   }, []);
+
+   console.log(configs);
+
     return (
    <>
     <div className="footer_section layout_padding">
@@ -12,17 +30,17 @@ function Footer() {
                         <ul>
                            <li>
                               <a href="#">
-                              <i className="fa fa-map-marker" aria-hidden="true"></i><span className="padding_left10">Address : Loram Ipusm</span>
+                              <i className="fa fa-map-marker" aria-hidden="true"></i><span className="padding_left10">Address : {configs[4] && configs[4].value}</span>
                               </a>
                            </li>
                            <li>
                               <a href="#">
-                              <i className="fa fa-phone" aria-hidden="true"></i><span className="padding_left10">Call : +01 1234567890</span>
+                              <i className="fa fa-phone" aria-hidden="true"></i><span className="padding_left10">Call : {configs[6] && configs[6].value}</span>
                               </a>
                            </li>
                            <li>
                               <a href="#">
-                              <i className="fa fa-envelope" aria-hidden="true"></i><span className="padding_left10">Email : demo@gmail.com</span>
+                              <i className="fa fa-envelope" aria-hidden="true"></i><span className="padding_left10">Email : {configs[5] && configs[5].value}</span>
                               </a>
                            </li>
                         </ul>
@@ -30,12 +48,12 @@ function Footer() {
                   </div>
                   <div className="col-sm-4">
                      <div className="footer_logo_1"><a href="index.html"><img src="images/footer-logo.png" /></a></div>
-                     <p className="dummy_text">commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non</p>
+                     <p className="dummy_text">{configs[2] && configs[2].value}</p>
                   </div>
                   <div className="col-sm-4">
                      <div className="main">
                         <h3 className="address_text">Best Products</h3>
-                        <p className="ipsum_text">dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non</p>
+                        <div className="ipsum_text">{configs[3] && configs[3].value}</div>
                      </div>
                   </div>
                </div>
