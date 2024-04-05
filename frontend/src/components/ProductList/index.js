@@ -16,7 +16,7 @@ function ProductList() {
                 setProducts([]);
             });
     }, []);
-
+  
     return (
         <div class="product_section layout_padding">
             <div class="container">

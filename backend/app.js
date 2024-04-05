@@ -17,7 +17,6 @@ const corsOptions = {
 
 app.use(cors(corsOptions))
 
-
 app.get('/products', (req, res) => {
 
     const myData = fs.readFileSync('../data/products.json', 'utf8');
@@ -41,8 +40,18 @@ app.get('/configs', (req, res) => {
         res.send(JSON.stringify([]));
         throw error;
     }
-
 })
+
+app.get('/banners', (req, res) => {
+    try {
+        const data = fs.readFileSync('../data/banners.json', 'utf8');
+        res.send(JSON.parse(data))
+    } catch (error) {
+        console.log(error);
+    }
+    res.send(JSON.stringify([]))
+})
+
 
 
 app.listen(port, () => {
