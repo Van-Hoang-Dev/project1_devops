@@ -1,0 +1,32 @@
+[
+    {
+        "id": "1",
+        "name": "Nguyễn Thúc Thuỳ Tiên",
+        "desc": "This lipstick is a game-changer! The color is rich and vibrant, with a smooth, creamy texture that glides effortlessly onto the lips. It provides long-lasting wear without drying out the lips, thanks to its hydrating formula enriched with nourishing ingredients like vitamin E and shea butter. Plus, the sleek packaging makes it easy to carry around for touch-ups throughout the day. Definitely my new go-to for a bold and beautiful pout!",
+        "img": "user1.img"
+    },
+    {
+        "id": "2",
+        "name": "Mai Ngô",
+        "desc": "I'm absolutely loving this eyebrow pencil! The formula is smooth and creamy, making it effortless to create precise and defined brows. Plus, the built-in spoolie brush at the other end is super handy for blending and shaping. It stays put all day without smudging or fading, giving me perfectly groomed brows from morning to night. Definitely my new holy grail eyebrow product!",
+        "img": "user2.img"
+    },
+    {
+        "id": "3",
+        "name": "Phương Khánh",
+        "desc": "Impressed with the quality of your customer service! The staff is very attentive and friendly, always ready to address my inquiries with care and professionalism. Their support has helped resolve all my issues quickly and effectively. This truly stands out as a highlight in my experience, and I will definitely continue to support your services in the future!",
+        "img": "user3.img"
+    },
+    {
+        "id": "4",
+        "name": "Taylor Swift",
+        "desc": "This beauty tool set is a must-have! It includes everything you need for flawless makeup application and skincare. The brushes are soft and blend makeup seamlessly, while the precision tweezers and eyelash curler help achieve a polished look. The compact design makes it perfect for travel or everyday use, and the quality is top-notch. Whether you're a makeup enthusiast or just starting out, this beauty tool set is a game-changer!",
+        "img": "user4.img"
+    },
+    {
+        "id": "5",
+        "name": "Anne Hathaway",
+        "desc": "This beauty tool set is absolutely stunning! From the sleek design to the high-quality materials, every aspect of this set exudes elegance. The brushes are luxuriously soft and perfect for blending makeup effortlessly. The included tools like tweezers and eyelash curlers are not only beautiful but also functional, helping to achieve flawless results. It's a true pleasure to use such beautifully crafted tools in my beauty routine. This set would make a fabulous addition to anyone's collection!",
+        "img": "user5.img"
+    }
+]

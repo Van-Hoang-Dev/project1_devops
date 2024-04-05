@@ -1,4 +1,4 @@
-const express  = require('express')
+const express = require('express')
 const app = express()
 const port = process.env.port || 3300
 const cors = require('cors');
@@ -18,41 +18,33 @@ const corsOptions = {
 app.use(cors(corsOptions))
 
 
-app.get('/', (req, res) =>{
-    res.send({
-        stats: "OK",
-        message: "ola"
-    })
+app.get('/', (req, res) => {
+
+    const myData = fs.readFileSync('../data/datajson.json', 'utf8');
+
+    res.send(JSON.parse(myData));
 })
 
-app.get('/banners', (req, res) =>{
+app.get('/banners', (req, res) => {
     const banners = [{
-        title : 'Beauty  Kit',
-        description : 'Ncididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo',
-        image : 'images/banner-img.png'
+        title: 'Beauty  Kit',
+        description: 'Ncididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo',
+        image: 'images/banner-img.png'
     },
     {
-        title : 'Beauty Kit2',
-        description : 'Ncididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo',
-        image : 'images/banner-img.png'
+        title: 'Beauty Kit2',
+        description: 'Ncididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo',
+        image: 'images/banner-img.png'
     },
     {
-        title : 'Beauty Kit3',
-        description : 'Ncididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo',
-        image : 'images/banner-img.png'
+        title: 'Beauty Kit3',
+        description: 'Ncididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo',
+        image: 'images/banner-img.png'
     }]
     res.send(banners)
 })
 
-app.get('/products',(req, res) =>{
-    try {
-        const data = fs.readFileSync('../data/datajson.json', 'utf8');
-        res.send(data)
-    } catch (error) {
-        console.log(error);
-    }
-})
-
-app.listen(port, ()=>{
+app.listen(port, () => {
     console.log(`example app listening on port ${port}`)
 })
+
