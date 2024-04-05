@@ -18,7 +18,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     node.vm.synced_folder "../frontend/build", "/vagrant/html"
     node.vm.provision :shell, path: "./setup/install-env.sh"
     node.vm.provider "virtualbox" do |vb|
-      vb.memory = 2024
+    vb.memory = 2024
     end
   end
 end

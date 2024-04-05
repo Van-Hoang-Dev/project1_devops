@@ -1,0 +1,1 @@
+{"virtualbox":{"/vagrant/html":{"guestpath":"/vagrant/html","hostpath":"K:/classfolder/hk4/devops/project1/project1_devops/frontend/build","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"K:/classfolder/hk4/devops/project1/project1_devops/local","disabled":false,"__vagrantfile":true}}}
