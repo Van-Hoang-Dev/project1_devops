@@ -18,40 +18,25 @@ const corsOptions = {
 app.use(cors(corsOptions))
 
 
-app.get('/', (req, res) => {
 
-    const myData = fs.readFileSync('../data/datajson.json', 'utf8');
-
-    res.send(JSON.parse(myData));
-})
-
-app.get('/products',(req, res) =>{
+app.get('/banners', (req, res) => {
     try {
-        const data = fs.readFileSync('../data/datajson.json', 'utf8');
+        const data = fs.readFileSync('../data/banners.json', 'utf8');
         res.send(JSON.parse(data))
     } catch (error) {
         console.log(error);
     }
+    res.send(JSON.stringify([]))
 })
 
-
-app.get('/banners', (req, res) => {
-    const banners = [{
-        title: 'Beauty  Kit',
-        description: 'Ncididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo',
-        image: 'images/banner-img.png'
-    },
-    {
-        title: 'Beauty Kit2',
-        description: 'Ncididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo',
-        image: 'images/banner-img.png'
-    },
-    {
-        title: 'Beauty Kit3',
-        description: 'Ncididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo',
-        image: 'images/banner-img.png'
-    }]
-    res.send(banners)
+app.get('/configs', (req, res) => {
+    try {
+        const data = fs.readFileSync('../data/configs.json', 'utf8');
+        res.send(JSON.parse(data))
+    } catch (error) {
+        console.log(error);
+    }
+    res.send(JSON.stringify([]))
 })
 
 app.listen(port, () => {

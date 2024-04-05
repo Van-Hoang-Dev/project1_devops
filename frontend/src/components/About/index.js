@@ -1,5 +1,21 @@
+import {useEffect, useState} from 'react';
 
 function About() {
+
+   const [configs, setconfigs] = useState([]);
+
+    useEffect(() => {
+        fetch("http://localhost:3300/configs").then((res)=>{
+          return res.json();
+        }).then((data) => {
+          console.log(data);
+          setconfigs(data);
+        }).catch((err) => {
+          console.log(err);
+        });
+      }, []);
+
+   const about = configs[1];
     return (
         <div className="about_section layout_padding">
         <div className="container">
@@ -8,7 +24,7 @@ function About() {
                  <div className="col-md-6">
                     <div className="about_taital_main">
                        <h1 className="about_taital">About Our beauty sotore</h1>
-                       <p className="about_text">labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequatlabore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequatlabore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat</p>
+                       <p className="about_text">{about.value}</p>
                        <div className="readmore_bt"><a href="#">Read More</a></div>
                     </div>
                  </div>
