@@ -18,7 +18,17 @@ function App(props) {
     }).then((data) => {
       // console.log(data);
       setBanners(data);
-      console.log(banners);
+      // console.log(banners);
+    }).catch((err) => {
+      console.log(err);
+    });
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:3330/products").then((res)=>{
+      return res.json();
+    }).then((data) => {
+      console.log(data);
     }).catch((err) => {
       console.log(err);
     });

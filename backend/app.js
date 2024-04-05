@@ -2,6 +2,7 @@ const express  = require('express')
 const app = express()
 const port = process.env.port || 3300
 const cors = require('cors');
+const fs = require('node:fs');
 
 const CORS_WHITELIST = [
     "http://localhost:3000",
@@ -41,6 +42,15 @@ app.get('/banners', (req, res) =>{
         image : 'images/banner-img.png'
     }]
     res.send(banners)
+})
+
+app.get('/products',(req, res) =>{
+    try {
+        const data = fs.readFileSync('../data/datajson.json', 'utf8');
+        res.send(data)
+    } catch (error) {
+        console.log(error);
+    }
 })
 
 app.listen(port, ()=>{
