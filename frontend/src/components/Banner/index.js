@@ -1,46 +1,35 @@
-import BannerList  from "../BannerList";
-function Banner() {
+import BannerList from "../BannerList";
+function Banner(props) {
+    console.log(props.banners);
     return (
-      <div classNameName="Banner">
-          <div className="banner_section layout_padding">
-         <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
-            <div className="carousel-inner">
-               <div className="carousel-item">
-                  <div className="container">
-                     <div className="row">
-                        <div className="col-sm-6">
-                           <h1 className="banner_taital">Beauty <br/>Kit</h1>
-                           <p className="banner_text">Ncididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
-                           <div className="read_bt"><a href="#">Buy Now</a></div>
-                        </div>
-                        <div className="col-sm-6">
-                           <div className="banner_img"><img src="images/banner-img.png"/></div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div className="carousel-item active">
-                  <div className="container">
-                     <div className="row">
-                        <div className="col-sm-6">
-                           <h1 className="banner_taital">Beauty <br/>Kit</h1>
-                           <p className="banner_text">Ncididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo</p>
-                           <div className="read_bt"><a href="#">Buy Now</a></div>
-                        </div>
-                        <div className="col-sm-6">
-                           <div className="banner_img"><img src="images/banner-img.png"/></div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <BannerList/>
-               <BannerList/>
+        <div classNameName="Banner">
+            <div className="banner_section layout_padding">
+                <div id="carouselExampleIndicators" className="carousel slide" data-ride="carousel">
+                    <div className="carousel-inner">
+                        {
+                        props.banners.map((banner, index)=>{
+                            if (index == 0) {
+                                return (
+                                    <div className="carousel-item active">
+                                    <BannerList title = {banner.title} description = {banner.description} image = {banner.image}/>
+                                    </div>
+                                    );
+                            } else {
+                                return (
+                                    <div className="carousel-item">
+                                    <BannerList title = {banner.title} description = {banner.description} image = {banner.image}/>
+                                    </div>
+                                    );  
+                            }
+                           
+                        })
+                        }
+                        
+                    </div>
+                </div>
             </div>
-         </div>
-      </div>
-      </div>
+        </div>
     );
-  }
-  
-  export default Banner;
-  
+}
+
+export default Banner;
