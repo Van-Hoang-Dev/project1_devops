@@ -24,7 +24,7 @@ function About() {
                  <div className="col-md-6">
                     <div className="about_taital_main">
                        <h1 className="about_taital">About Our beauty sotore</h1>
-                       <p className="about_text">{about.value}</p>
+                       <p className="about_text">{about && about.value}</p>
                        <div className="readmore_bt"><a href="#">Read More</a></div>
                     </div>
                  </div>
