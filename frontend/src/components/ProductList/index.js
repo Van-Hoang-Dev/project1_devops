@@ -1,7 +1,7 @@
 
 import Product from './../Product/index';
 
-function ProductList() {
+function ProductList(props) {
     return (
         <div class="product_section layout_padding">
             <div class="container">

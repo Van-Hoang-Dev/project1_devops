@@ -11,6 +11,7 @@ import {useEffect, useState} from 'react';
 
 function App(props) {
   const [banners, setBanners] = useState([]);
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
     fetch("http://localhost:3330/banners").then((res)=>{
@@ -23,13 +24,22 @@ function App(props) {
       console.log(err);
     });
   }, []);
+  useEffect(()=> {
+    fetch("http://localhost:3330/products").then((res)=>{
+      return res.json();
+    }).then((data)=>{
+      setProducts(data);
+    }).then((err)=>{
+      console.log(err);
+    })
+  }, []);
 
   return (
     <>
       <Header/>
 
       <Banner banners = {banners}/>
-    <ProductList />
+    <ProductList products = {products}/>
     <About />
       <UserRoot />
       <Contact />
