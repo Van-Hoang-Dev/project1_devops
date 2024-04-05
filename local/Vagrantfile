@@ -13,12 +13,21 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define "server-local" do |node|
     node.vm.box = "ubuntu/focal64"
     node.vm.hostname = "server-local"
+<<<<<<< HEAD
     node.vm.network "forwarded_port", guest: 80, host: 8080
     node.vm.network "private_network", ip: "172.16.3.3"
     node.vm.synced_folder "../frontend/build", "/vagrant/html"
     node.vm.provision :shell, path: "./setup/install-env.sh"
     node.vm.provider "virtualbox" do |vb|
       vb.memory = 2024
+=======
+    node.vm.network "private_network", ip: "172.16.3.3"
+    node.vm.network "forwarded_port", guest: 80, host: 8080
+    node.vm.synced_folder "../frontend/build", "/vagrant/html"
+    node.vm.provision :shell, path: "./setup/install-env.sh"
+    node.vm.provider "virtualbox" do |vb|
+    vb.memory = 2024
+>>>>>>> d491dd2e1e9ccf554d749d6da186e21e6bb7b563
     end
   end
 end
