@@ -7,11 +7,30 @@ import ProductList from './components/ProductList';
 import UserRoot from './components/UserRoot';
 import About from './components/About';
 import Contact from './components/Contact';
+import {useEffect, useState } from 'react';
+import BannerList from './components/BannerList';
+
+
 function App() {
+
+  const [banners, setBanners] = useState([]);
+
+  //Hook
+  useEffect(() => {
+    fetch("http://localhost:2004/banners").then((res) => {
+      return res.json();
+    }).then((data) => {
+      // console.log(data);
+      setBanners(data);
+    }).catch((err) => {
+      console.log(err);
+    });
+  }, []);
+
   return (
     <>
       <Header/>
-      <Banner/>
+      <Banner banners ={banners}/>
     <ProductList />
     <About />
       <UserRoot />
