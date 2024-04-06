@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const port = process.env.port || 3300
+const port = 3300
 const cors = require('cors');
 const fs = require('node:fs');
 
@@ -20,6 +20,32 @@ app.use(cors(corsOptions))
 app.get('/products', (req, res) => {
 
     const myData = fs.readFileSync('../data/products.json', 'utf8');
+
+    try {
+        res.send(JSON.parse(myData));
+    } catch (error) {
+        res.send(JSON.stringify([]));
+        throw error;
+    }
+
+})
+
+app.get('/users', (req, res) => {
+
+    const myData = fs.readFileSync('../data/users.json', 'utf8');
+
+    try {
+        res.send(JSON.parse(myData));
+    } catch (error) {
+        res.send(JSON.stringify([]));
+        throw error;
+    }
+})
+
+
+app.get('/contacts', (req, res) => {
+
+    const myData = fs.readFileSync('../data/contacts.json', 'utf8');
 
     try {
         res.send(JSON.parse(myData));
