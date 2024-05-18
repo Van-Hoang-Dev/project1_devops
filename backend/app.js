@@ -3,7 +3,8 @@ const app = express()
 const port = process.env.port || 3000
 const cors = require('cors');
 const fs = require('node:fs');
-const mysql = require("mysql2")
+const mysql = require("mysql2");
+const { ifError } = require('node:assert');
 
 const CORS_WHITELIST = [
     "http://localhost:3000",
@@ -17,7 +18,7 @@ const corsOptions = {
 }
 
 const dbHost = process.env.DB_HOST || 'localhost';
-const dbPort = process.env.DB_PORT || '3300';
+const dbPort = process.env.DB_PORT || '3301';
 const dbUser = process.env.DB_USER || 'admin';
 const dbPass = process.env.DB_PASS || 'admin';
 const dbName = process.env.DB_NAME || 'tdc-devops';
@@ -39,20 +40,28 @@ app.get('/', (req, res) => {
         message: "Welcome to my API"
     });
 });
-
+/*
 app.get('/products', (req, res) => {
-
     const myData = fs.readFileSync('../data/products.json', 'utf8');
-
     try {
         res.send(JSON.parse(myData));
     } catch (error) {
         res.send(JSON.stringify([]));
         throw error;
     }
+}) */
 
+app.get('/products', (req, res) => {
+    connection.query('SELECT * FROM products', (error, results) => {
+        if (error){
+            console.error('Lỗi truy vấn:', error);
+            res.status(500).json({ error: 'Đã xảy ra lỗi khi truy vấn dữ liệu' });
+            return;
+        }
+        res.json(results);
+    })
 })
-
+/*
 app.get('/users', (req, res) => {
 
     const myData = fs.readFileSync('../data/users.json', 'utf8');
@@ -63,22 +72,31 @@ app.get('/users', (req, res) => {
         res.send(JSON.stringify([]));
         throw error;
     }
+}) */
+
+app.get('/beauty_reviews', (req, res) => {
+    connection.query('SELECT * FROM beauty_reviews', (error, results) => {
+        if (error){
+            console.error('Lỗi truy vấn:', error);
+            res.status(500).json({ error: 'Đã xảy ra lỗi khi truy vấn dữ liệu' });
+            return;
+        }
+        res.json(results);
+    })
 })
 
 
 app.get('/contacts', (req, res) => {
-
     const myData = fs.readFileSync('../data/contacts.json', 'utf8');
-
     try {
         res.send(JSON.parse(myData));
     } catch (error) {
         res.send(JSON.stringify([]));
         throw error;
     }
-
 })
 
+/*
 app.get('/configs', (req, res) => {
 
     const myData = fs.readFileSync('../data/configs.json', 'utf8');
@@ -89,6 +107,17 @@ app.get('/configs', (req, res) => {
         res.send(JSON.stringify([]));
         throw error;
     }
+})
+*/
+app.get('/configs', (req, res) => {
+    connection.query('SELECT * FROM configs', (error, results) => {
+        if (error){
+            console.error('Lỗi truy vấn:', error);
+            res.status(500).json({ error: 'Đã xảy ra lỗi khi truy vấn dữ liệu' });
+            return;
+        }
+        res.json(results);
+    })
 })
 
 // app.get('/banners', (req, res) => {

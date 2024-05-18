@@ -4,9 +4,10 @@ import {useEffect, useState} from 'react';
 function Banner() {
 
     const [banners, setBanners] = useState([]);
-
+    const apiUrl = process.env.REACT_APP_API_URL;
+    console.log("Hello: ", apiUrl);
     useEffect(() => {
-        fetch("http://localhost:3300/banners").then((res)=>{
+        fetch(apiUrl + "/banners").then((res)=>{
           return res.json();
         }).then((data) => {
           console.log(data);
