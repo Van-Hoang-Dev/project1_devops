@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
+import {API} from '../../App.js';
 
 function Contact() {
    const [configs, setConfigs] = useState([]);
 
    useEffect(() => {
-      fetch("http://localhost:3300/configs")
+      fetch(API + "configs")
          .then(res => res.json())
          .then(data => {
             setConfigs(data);
@@ -13,8 +14,6 @@ function Contact() {
             setConfigs([]);
          });
    }, []);
-
-   console.log(configs);
 
     return (
         <div className="contact_section layout_padding">

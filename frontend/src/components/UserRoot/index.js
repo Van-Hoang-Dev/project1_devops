@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
 import User from "../User";
-
+import {API} from '../../App.js';
 
 function UserRoot() {
     const [users, setUsers] = useState([]);
 
     useEffect(()=>{
-        fetch("http://localhost:3300/users")
+        fetch(API + "users")
         .then(res => res.json())
         .then(data => {
             setUsers(data);
@@ -14,7 +14,7 @@ function UserRoot() {
         .catch(err=>{
             setUsers([]);
         })
-    })
+    }, []);
 
     return (
 
@@ -29,7 +29,7 @@ function UserRoot() {
                     <div className="carousel-inner">
                         {
                             users.map((user, index) => (
-                                <User name={user.name} des={user.desc} isActive={index == 0 ? true : false}/>
+                                <User key={index} name={user.name} des={user.desc} isActive={index == 0 ? true : false}/>
                             ))
                         }
                     </div>

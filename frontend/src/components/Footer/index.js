@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
+import {API} from '../../App.js';
 
 function Footer() {
 
    const [configs, setConfigs] = useState([]);
 
    useEffect(() => {
-      fetch("http://localhost:3300/configs")
+      fetch(API + "configs")
          .then(res => res.json())
          .then(data => {
             setConfigs(data);
@@ -14,8 +15,6 @@ function Footer() {
             setConfigs([]);
          });
    }, []);
-
-   console.log(configs);
 
     return (
    <>

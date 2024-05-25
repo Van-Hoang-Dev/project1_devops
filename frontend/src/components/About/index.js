@@ -1,14 +1,14 @@
 import {useEffect, useState} from 'react';
+import {API} from '../../App.js';
 
 function About() {
 
    const [configs, setconfigs] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:3300/configs").then((res)=>{
+        fetch(API + "configs").then((res)=>{
           return res.json();
         }).then((data) => {
-          console.log(data);
           setconfigs(data);
         }).catch((err) => {
           console.log(err);

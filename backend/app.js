@@ -1,86 +1,106 @@
-const express = require('express')
-const app = express()
-const port = 3300
-const cors = require('cors');
-const fs = require('node:fs');
+const express = require("express");
+const app = express();
+require('dotenv').config()
+const port = process.env.REACT_APP_PORT;
+const cors = require("cors");
+const fs = require("node:fs");
+const mysql = require("mysql");
 
+//CORS
 const CORS_WHITELIST = [
-    "http://localhost:3000",
-    "http://localhost:3002",
-    "http://localhost:3006"
-]
-
+  "http://localhost:3000",
+  "http://localhost:3002",
+  "http://localhost:3006",
+];
 const corsOptions = {
-    origin: CORS_WHITELIST /* accept all origin */,
-    optionSuccessStatus: 200
-}
+  origin: CORS_WHITELIST /* accept all origin */,
+  optionSuccessStatus: 200,
+};
+//
 
-app.use(cors(corsOptions))
+//MYSQL
+var con = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "devops",
+});
 
-app.get('/products', (req, res) => {
+con.connect(function(err) {
+  if (err) throw err;
+  console.log("Connected!");
+});
+//
+app.use(cors(corsOptions));
 
-    const myData = fs.readFileSync('../data/products.json', 'utf8');
+app.get("/api", (req, res) => {
+  res.send({
+    message: "Welcome to Làng gốm xì ke team",
+    status: 200,
+  });
+});
 
+app.get("/api/products", (req, res) => {
+  con.query("SELECT * FROM `products`", (err, products) => {
+    if (err) throw err;
     try {
-        res.send(JSON.parse(myData));
+      res.send(products);
     } catch (error) {
-        res.send(JSON.stringify([]));
-        throw error;
+      res.send(JSON.stringify([]));
+      throw error;
     }
+  });
+});
 
-})
-
-app.get('/users', (req, res) => {
-
-    const myData = fs.readFileSync('../data/users.json', 'utf8');
-
+app.get("/api/users", (req, res) => {
+  con.query("SELECT * FROM `users`", (err, users) => {
+    if (err) throw err;
     try {
-        res.send(JSON.parse(myData));
+      res.send(users);
     } catch (error) {
-        res.send(JSON.stringify([]));
-        throw error;
+      res.send(JSON.stringify([]));
+      throw error;
     }
-})
+  });
+});
 
-
-app.get('/contacts', (req, res) => {
-
-    const myData = fs.readFileSync('../data/contacts.json', 'utf8');
-
+app.get("/api/contacts", (req, res) => {
+  con.query("SELECT * FROM `contacts`", (err, contacts) => {
+    if (err) throw err;
     try {
-        res.send(JSON.parse(myData));
+      res.send(contacts);
     } catch (error) {
-        res.send(JSON.stringify([]));
-        throw error;
+      res.send(JSON.stringify([]));
+      throw error;
     }
+  });
+});
 
-})
-
-app.get('/configs', (req, res) => {
-
-    const myData = fs.readFileSync('../data/configs.json', 'utf8');
-
+app.get("/api/configs", (req, res) => {
+  con.query("SELECT * FROM `configs`", (err, configs) => {
+    if (err) throw err;
     try {
-        res.send(JSON.parse(myData));
+      res.send(configs);
     } catch (error) {
-        res.send(JSON.stringify([]));
-        throw error;
+      res.send(JSON.stringify([]));
+      throw error;
     }
-})
+  });
+});
 
-app.get('/banners', (req, res) => {
+app.get("/api/banners", (req, res) => {
+  con.query("SELECT * FROM `banners`", (err, banners) => {
+    if (err) throw err;
     try {
-        const data = fs.readFileSync('../data/banners.json', 'utf8');
-        res.send(JSON.parse(data))
+      res.send(banners);
     } catch (error) {
-        console.log(error);
+      res.send(JSON.stringify([]));
+      throw error;
     }
-    res.send(JSON.stringify([]))
-})
+  });
+});
 
-
-
-app.listen(port, () => {
-    console.log(`example app listening on port ${port}`)
-})
-
+app.listen(port, (ms) => {
+  console.log(`example app listening on port ${port}`);
+  console.log(ms);
+});
