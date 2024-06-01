@@ -1,0 +1,9 @@
+docker run -d --name devops-backend --network devops-network -p 8080:3000 `
+    -e REACT_APP_PORT="3000" `
+    -e REACT_APP_DB_HOST="devops-db" `
+    -e REACT_APP_DB_PORT="3307" `
+    -e REACT_APP_DB_USER="admin" `
+    -e REACT_APP_DB_PASS="root12345" `
+    -e REACT_APP_DB_NAME="devops" devops-backend:latest;
+
+docker rm -f devops-backend

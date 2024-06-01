@@ -1,0 +1,3 @@
+docker run -d -p 3000:3000 --name devops-frontend `
+    -e REACT_APP_API=http://localhost:8080/api/ `
+    devops-frontend:latest

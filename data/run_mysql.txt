@@ -1,0 +1,22 @@
+docker network create devops-network
+
+docker run -d --name devops-db --network devops-network -p 3307:3306 `
+    -e MYSQL_ROOT_PASSWORD="root12345" `
+    -e MYSQL_USER="admin" `
+    -e MYSQL_PASSWORD="root12345" `
+    -e MYSQL_DATABASE="devops" `
+    mysql:8.0
+
+docker exec -it devops-db mysql -u admin -p
+
+enter: root12345
+
+show databases; => "devops"
+
+use devops; => databases changed
+
+paste sql queries; 
+
+show tables; => tables created
+
+exit

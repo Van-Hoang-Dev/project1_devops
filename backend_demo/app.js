@@ -8,13 +8,19 @@ const mysql = require("mysql2");
 
 const dbHost = process.env.REACT_APP_DB_HOST || "localhost";
 const dbPort = process.env.REACT_APP_DB_PORT || "3306";
-const dbUser = process.env.REACT_APP_DB_USER || "admin";
+const dbUser = process.env.REACT_APP_DB_USER || "root";
 const dbPass = process.env.REACT_APP_DB_PASS || "";
 const dbName = process.env.REACT_APP_DB_NAME || "devops";
 
 //CORS
+const CORS_WHITELIST = [
+  "http://localhost:3000",
+  "http://localhost:3002",
+  "http://localhost:3006",
+  "http://localhost:3306",
+];
 const corsOptions = {
-  origin: true,
+  origin: CORS_WHITELIST /* accept all origin */,
   optionSuccessStatus: 200,
 };
 //
